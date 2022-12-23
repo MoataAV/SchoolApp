@@ -1,4 +1,4 @@
-﻿namespace School.Features.Test.Views;
+﻿namespace School.Features.Test.ViewsT;
 
 public class TestResponse
 {

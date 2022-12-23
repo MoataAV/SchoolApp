@@ -1,6 +1,6 @@
 ﻿using School.Base;
 
-namespace School.Features.Test.Models;
+namespace School.Features.Test.ModelsT;
 
 public class TestModel : Model
 {

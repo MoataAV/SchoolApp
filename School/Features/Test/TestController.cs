@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using School.Features.Test.Models;
-using School.Features.Test.Views;
+using School.Features.Test.ModelsT;
+using School.Features.Test.ViewsT;
 
 namespace School.Features.Test;
 

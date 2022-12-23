@@ -65,8 +65,50 @@ public class AssignmentsController
             Deadline = assignment.Deadline
         };
     }
-    //[HttpDelete]
+
+    [HttpDelete]
     
-    
-    //[HttpPatch]
+    public AssignmentsResponse Delete([FromRoute] string id)
+    {
+        var assignment = _mockDb.FirstOrDefault(x => x.Id == id);
+
+        if (assignment is null)
+        {
+            return null;
+        }
+        
+        _mockDb.Remove(assignment);
+        
+        return new AssignmentsResponse
+        {
+            Id = assignment.Id,
+            Subject = assignment.Subject,
+            Description = assignment.Description,
+            Deadline = assignment.Deadline
+        };
+    }
+
+    [HttpPatch("{id}")]
+    public AssignmentsResponse Update([FromRoute] string id,[FromBody] AssignmentsRequest request)
+    {
+        var assignment = _mockDb.FirstOrDefault(user => user.Id == id);
+        if (assignment is null)
+        {
+            return null;
+            
+        }
+
+        assignment.Updated = DateTime.UtcNow;
+        assignment.Subject = request.Subject;
+        assignment.Description = request.Description;
+        assignment.Deadline = request.Deadline;
+
+        return new AssignmentsResponse
+        {
+            Id = assignment.Id,
+            Subject = assignment.Subject,
+            Description = assignment.Description,
+            Deadline = assignment.Deadline
+        };
+    }
 }

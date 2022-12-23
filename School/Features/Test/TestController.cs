@@ -36,27 +36,27 @@ public class TestController
     public IEnumerable<TestResponse> Get()
     {
         return _mockDb.Select(
-            assignment => new TestResponse
+            test => new TestResponse
             {
-                Id = assignment.Id,
-                Subject = assignment.Subject,
-                TestDate = assignment.TestDate
+                Id = test.Id,
+                Subject = test.Subject,
+                TestDate = test.TestDate
             }).ToList();
     }
     
     [HttpGet("{id}")]
     public TestResponse Get([FromRoute] string id)
     {
-        var assignment = _mockDb.FirstOrDefault(x => x.Id == id);
-        if (assignment is null)
+        var test = _mockDb.FirstOrDefault(x => x.Id == id);
+        if (test is null)
         {
             return null;
         }
         return new TestResponse
         {
-            Id = assignment.Id,
-            Subject = assignment.Subject,
-            TestDate = assignment.TestDate
+            Id = test.Id,
+            Subject = test.Subject,
+            TestDate = test.TestDate
         };
     }
     
@@ -64,42 +64,42 @@ public class TestController
     
     public TestResponse Delete([FromRoute] string id)
     {
-        var assignment = _mockDb.FirstOrDefault(x => x.Id == id);
+        var test = _mockDb.FirstOrDefault(x => x.Id == id);
 
-        if (assignment is null)
+        if (test is null)
         {
             return null;
         }
         
-        _mockDb.Remove(assignment);
+        _mockDb.Remove(test);
         
         return new TestResponse
         {
-            Id = assignment.Id,
-            Subject = assignment.Subject,
-            TestDate = assignment.TestDate
+            Id = test.Id,
+            Subject = test.Subject,
+            TestDate = test.TestDate
         };
     }
     
     [HttpPatch("{id}")]
     public TestResponse Update([FromRoute] string id,[FromBody] TestRequest request)
     {
-        var assignment = _mockDb.FirstOrDefault(user => user.Id == id);
-        if (assignment is null)
+        var test = _mockDb.FirstOrDefault(user => user.Id == id);
+        if (test is null)
         {
             return null;
             
         }
 
-        assignment.Updated = DateTime.UtcNow;
-        assignment.Subject = request.Subject;
-        assignment.TestDate = request.TestDate
+        test.Updated = DateTime.UtcNow;
+        test.Subject = request.Subject;
+        test.TestDate = request.TestDate;
 
         return new TestResponse
         {
-            Id = assignment.Id,
-            Subject = assignment.Subject,
-            TestDate = assignment.TestDate
+            Id = test.Id,
+            Subject = test.Subject,
+            TestDate = test.TestDate
         };
     }
     

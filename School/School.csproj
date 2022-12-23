@@ -13,6 +13,9 @@
 
     <ItemGroup>
       <Compile Remove="Features\Assignments\Views\AssignmentDelete.cs" />
+      <Compile Remove="Features\Subject\ModelsS\TestModel.cs" />
+      <Compile Remove="Features\Subject\ViewsS\..cs" />
+      <Compile Remove="Features\Subject\ViewsS\SubjectController.cs" />
     </ItemGroup>
 
 </Project>
